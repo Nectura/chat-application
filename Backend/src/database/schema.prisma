@@ -1,0 +1,43 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String      @id @map("id")
+  name          String      @map("name")
+  emailAddress  String      @map("email_address")
+  avatarUrl     String?     @map("avatar_url")
+  createdAt     DateTime    @default(now()) @map("created_at")
+}
+
+model Channel {
+  id          BigInt     @id @default(autoincrement()) @map("id")
+  type        BigInt     @map("type")
+  name        String     @map("name")
+  iconUrl     String?    @map("icon_url")
+  ownerId     String?    @map("owner_id")
+  permissions BigInt     @default(0) @map("permissions")
+  createdAt   DateTime   @default(now()) @map("created_at")
+}
+
+model ChatMessage {
+  id         BigInt     @id @default(autoincrement()) @map("id")
+  channelId  BigInt     @map("channel_id")
+  senderId   String     @map("sender_id")
+  message    String     @map("message")
+  createdAt  DateTime   @default(now()) @map("created_at")
+  modifiedAt DateTime?  @map("modified_at")
+}
+
+model ChannelUser {
+  channelId          BigInt     @map("channel_id")
+  userId             String     @map("user_id")
+  joinedAt           DateTime   @default(now()) @map("joined_at")
+
+  @@id([channelId, userId])
+}

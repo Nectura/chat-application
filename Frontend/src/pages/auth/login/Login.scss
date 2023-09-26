@@ -1,0 +1,28 @@
+.login-form {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ddd;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Add this line to center the content horizontally */
+}
+
+.forgot-pw {
+  margin-top: 10px;
+  margin-right: 20px;
+  text-align: right;
+  margin-left: auto; /* This will move the link to the right */
+}
+
+.registration-link {
+    padding-bottom: 10px;
+}
